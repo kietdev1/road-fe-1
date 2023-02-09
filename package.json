@@ -1,0 +1,23 @@
+{
+  "name": "road-fe-1",
+  "version": "1.0.0",
+  "description": "Road front end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kietdev1/road-fe-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kietdev1/road-fe-1/issues"
+  },
+  "homepage": "https://github.com/kietdev1/road-fe-1#readme",
+  "dependencies": {
+    "create-react-app": "^5.0.1"
+  }
+}
