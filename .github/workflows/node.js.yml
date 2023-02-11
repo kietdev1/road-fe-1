@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -26,10 +26,21 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: '**/package-lock.json' # THIS PATTERN did the trick for me.
-    #- run: npm ci
-    - run: npm install
-    - run: npm run build --if-present
-    - run: npm test
+        
+    - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install # will run `yarn install` command
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # if needed
+      - name: Build production bundle
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build:prod # will run `yarn build:prod` command
+      - name: Test the app
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: test # will run `yarn test` command
 
     # deploy the application to netlify
     - name: Deploy production to Netlify
