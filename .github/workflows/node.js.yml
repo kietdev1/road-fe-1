@@ -24,8 +24,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json' # THIS PATTERN did the trick for me.
+          #cache: 'npm'
+          #cache-dependency-path: '**/package-lock.json' # THIS PATTERN did the trick for me.
         
       - name: Run install
         uses: borales/actions-yarn@v4
